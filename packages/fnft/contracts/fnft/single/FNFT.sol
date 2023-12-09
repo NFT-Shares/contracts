@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity >=0.8.12;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -16,11 +16,11 @@ contract FNFT is ERC20 {
     string memory symbol,
     address _minter,
     uint256 totalSupply
-  ) ERC20(name, symbol) {
+  ) ERC20(name, symbol) public {
     nft = _nft;
     tokenId = _tokenId;
     minter = _minter;
-    nft.transferFrom(msg.sender, address(this), _tokenId);
+    nft.transferFrom(_minter, address(this), _tokenId);
     _mint(_minter, totalSupply);
   }
 

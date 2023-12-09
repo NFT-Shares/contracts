@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity >=0.8.12;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -14,9 +14,15 @@ contract FNFTCollection is ERC20, Votable {
     string memory name,
     string memory symbol,
     address _minter,
-    uint256 totalSupply
+    uint256 totalSupply,
+    ERC721[] memory _nfts,
+    uint256[] memory _tokenIds
   ) ERC20(name, symbol) {
     minter = _minter;
+    require(_nfts.length == _tokenIds.length, "FNFTCollection: nfts and tokenIds length mismatch");
+    for(uint i = 0; i < _nfts.length; i++) {
+      _nfts[i].transferFrom(_minter, address(this), _tokenIds[i]);
+    }
     _mint(_minter, totalSupply);
   }
 

@@ -27,7 +27,7 @@ const config: HardhatUserConfig = {
   networks: {
     xrpl_devnet: {
       url: "https://rpc-evm-sidechain.xrpl.org",
-      chainId: 1440001,
+      chainId: 1440002,
       accounts: require("./secrets.json").privateKey,
       gas: 30000001,
       saveDeployments: true,

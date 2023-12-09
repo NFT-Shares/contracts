@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity >=0.8.12;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -10,7 +10,8 @@ contract IFO is Ownable {
   bool public isProgress;
   uint256 public sales;
 
-  constructor(ERC20 _fnft, address _owner, uint256 amount, uint256 _price) Ownable(_owner) {
+  constructor(ERC20 _fnft, address _owner, uint256 amount, uint256 _price) Ownable() public{
+    transferOwnership(_owner);
     fnft = _fnft;
     price = _price;
     isProgress = true;

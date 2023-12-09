@@ -1,13 +1,11 @@
 {
-  "name": "@nft-shares/fnft",
+  "name": "@nft-shares/testnet",
   "version": "1.0.1",
-  "description": "fnft smart contracts for interacting with nft shares Protocol",
   "license": "GPL-2.0-or-later",
   "publishConfig": {
     "access": "public"
   },
   "keywords": [
-    "nft shares",
     "fnft"
   ],
   "files": [
