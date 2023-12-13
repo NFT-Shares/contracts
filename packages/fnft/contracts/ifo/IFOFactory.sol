@@ -9,6 +9,7 @@ contract IFOFactory {
 
   function create(ERC20 fnft, uint256 amount, uint256 price) public returns (IFO){
     ifos[fnft] = new IFO(fnft, msg.sender, amount, price);
+    fnft.transferFrom(msg.sender, address(ifos[fnft]), amount);
     return ifos[fnft];
   }
 }

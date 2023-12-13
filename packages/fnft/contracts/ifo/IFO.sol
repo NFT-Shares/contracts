@@ -9,13 +9,14 @@ contract IFO is Ownable {
   uint256 public price;
   bool public isProgress;
   uint256 public sales;
+  uint256 public targetAmount;
 
   constructor(ERC20 _fnft, address _owner, uint256 amount, uint256 _price) Ownable() public{
     transferOwnership(_owner);
     fnft = _fnft;
     price = _price;
     isProgress = true;
-    fnft.transferFrom(_owner, address(this), amount);
+    targetAmount = amount;
   }
 
   function stop() onlyOwner public {
@@ -27,7 +28,7 @@ contract IFO is Ownable {
   function buy() public payable {
     require(isProgress, "IFO is not progress");
     require(msg.value >= price, "Not enough price");
-    uint256 amount = msg.value / price;
+    uint256 amount = msg.value / price * 1e18;
     require(amount <= fnft.balanceOf(address(this)), "Not enough balance");
     fnft.transfer(msg.sender, amount);
     sales += msg.value;
