@@ -18,6 +18,7 @@
     "compile": "yarn hardhat compile",
     "deploy": "hardhat run scripts/deploy.ts --network ",
     "deploy:xrpl:testnet": "yarn hardhat deploy --tags testnet --network xrpl_devnet",
+    "deploy:mode:testnet": "yarn hardhat deploy --tags testnet --network mode_testnet",
     "verify": "hardhat run scripts/verify.ts --network"
   },
   "devDependencies": {

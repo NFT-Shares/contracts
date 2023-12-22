@@ -23,6 +23,13 @@ export const hardhatBaseConfig = {
       gas: 30000001,
       saveDeployments: true,
     },
+    mode_testnet: {
+      url: "https://sepolia.mode.network",
+      chainId: 919,
+      accounts: require("./secrets.json").privateKey,
+      saveDeployments: true,
+      gasPrice: 10000000000,
+    },
   },
   namedAccounts: {
     deployer: 0,
